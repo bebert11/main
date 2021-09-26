@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import youtube_dl
-import vlc
+from playsound import playsound
 
 class music(commands.Cog):
   def _init_(self, client):
@@ -14,22 +14,19 @@ class music(commands.Cog):
     voice_channel = ctx.author.voice.channel
     if ctx.voice_client is None:
       await voice_channel.connect()
-      p = vlc.MediaPlayer("bonjour.mp3")
-      p.play()
+      playsound('bonjour.mp3')
     else:
       await ctx.voice_client.move_to(voice_channel)
   
   @commands.command()
   async def disconnect(self,ctx):
-    p = vlc.MediaPlayer("aurevoir.mp3")
-    p.play()
+    playsound('aurevoir.mp3')
     await ctx.voice_client.disconnect()
 
   @commands.command()
   async def play(self,ctx,url):
     ctx.voice_client.stop()
-    p = vlc.MediaPlayer("son.mp3")
-    p.play()
+    playsound('son.mp3')
     FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
@@ -42,8 +39,7 @@ class music(commands.Cog):
       
   @commands.command()
   async def pause(self,ctx):
-    p = vlc.MediaPlayer("pause.mp3")
-    p.play()
+    playsound('pause.mp3')
     await ctx.voice_client.pause()
     await ctx.send("Paused ⏸️")
 
