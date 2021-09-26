@@ -22,14 +22,6 @@ class music(commands.Cog):
 
   @commands.command()
   async def play(self,ctx,url,message):
-    if ctx.author.voice is None:
-      await ctx.send("You're not in a voice channel !")
-      await message.channel.send("You're not in a voice channel !")
-    voice_channel = ctx.author.voice.channel
-    if ctx.voice_client is None:
-      await voice_channel.connect()
-    else:
-      await ctx.voice_client.move_to(voice_channel)
     ctx.voice_client.stop()
     FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     YDL_OPTIONS = {'format':"bestaudio"}
