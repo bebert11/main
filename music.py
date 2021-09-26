@@ -34,16 +34,14 @@ class music(commands.Cog):
       vc.play(source)
       
   @commands.command()
-  async def pause(self,ctx,message):
+  async def pause(self,ctx):
     await ctx.voice_client.pause()
     await ctx.send("Paused ⏸️")
-    await message.channel.send('Paused ⏸️')
 
   @commands.command()
-  async def resume(self,ctx,message):
+  async def resume(self,ctx):
     await ctx.voice_client.resume()
     await ctx.send("Resumed ⏯️")
-    await message.channel.send('Resumed ⏯️')
 
 
 def setup(client):
