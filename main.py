@@ -1,14 +1,15 @@
 import discord
+import os
 from discord.ext import commands
 import music
+from keep_alive import keep_alive
 
 cogs = [music]
 
-client = commands.Bot(command_prefix='&', intents = discord.Intents.all())
-
+client = commands.Bot(command_prefix='&', intents=discord.Intents.all())
 
 for i in range(len(cogs)):
-  cogs[i].setup(client)
+    cogs[i].setup(client)
 
-
-client.run("ODkxMzcwODI4NTA2MjI2Nzk5.YU9Xxg.eOpbZhUmAuQpNYjezrDy2j_LOw4")
+keep_alive()
+client.run(os.environ['TOKEN'])
