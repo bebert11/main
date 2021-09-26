@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import youtube_dl
-from replit import audio
 
 class music(commands.Cog):
   def _init_(self, client):
@@ -19,7 +18,7 @@ class music(commands.Cog):
       YDL_OPTIONS = {'format':"bestaudio"}
       vc = ctx.voice_client
       with youtube_dl.YoutubeDL(YDL_OPTIONS):
-        source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/czhXkKCbdI4",**FFMPEG_OPTIONS)
+        source = await discord.FFmpegOpusAudio.from_probe("https://www.youtube.com/watch?v=czhXkKCbdI4&ab_channel=MathisBebooz",**FFMPEG_OPTIONS)
         vc.play(source)
 
     else:
@@ -32,7 +31,7 @@ class music(commands.Cog):
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
     with youtube_dl.YoutubeDL(YDL_OPTIONS):
-      source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/mzw6HCPKtzo",**FFMPEG_OPTIONS)
+      source = await discord.FFmpegOpusAudio.from_probe("https://www.youtube.com/watch?v=mzw6HCPKtzo&ab_channel=MathisBebooz",**FFMPEG_OPTIONS)
       vc.play(source)
     await ctx.voice_client.disconnect()
 
@@ -44,7 +43,7 @@ class music(commands.Cog):
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
     with youtube_dl.YoutubeDL(YDL_OPTIONS):
-      source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/CI10_oVNIbE",**FFMPEG_OPTIONS)
+      source = await discord.FFmpegOpusAudio.from_probe("https://www.youtube.com/watch?v=CI10_oVNIbE&ab_channel=MathisBebooz",**FFMPEG_OPTIONS)
       vc.play(source)
 
 
@@ -66,7 +65,7 @@ class music(commands.Cog):
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
     with youtube_dl.YoutubeDL(YDL_OPTIONS):
-      source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/rOjazSw07qo",**FFMPEG_OPTIONS)
+      source = await discord.FFmpegOpusAudio.from_probe("https://www.youtube.com/watch?v=rOjazSw07qo&ab_channel=MathisBebooz",**FFMPEG_OPTIONS)
       vc.play(source)
     await ctx.voice_client.pause()
     await ctx.send("Paused ⏸️")
