@@ -20,7 +20,7 @@ class music(commands.Cog):
       vc = ctx.voice_client
 
       with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-        info = ydl.extract_info("https://youtu.be/qO0ItG56s7M", download=False)
+        info = ydl.extract_info("https://www.youtube.com/watch?v=uhj4EXsPtjo&ab_channel=MathisBebooz", download=False)
         url2 = info['formats'][0]['url']
         source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
         vc.play(source)
@@ -36,7 +36,7 @@ class music(commands.Cog):
     vc = ctx.voice_client
 
     with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-      info = ydl.extract_info("https://youtu.be/GK0mTOB4T1Q", download=False)
+      info = ydl.extract_info("https://www.youtube.com/watch?v=afS0oiFr7CI&ab_channel=MathisBebooz", download=False)
       url2 = info['formats'][0]['url']
       source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
       vc.play(source)
