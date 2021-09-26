@@ -14,19 +14,19 @@ class music(commands.Cog):
     voice_channel = ctx.author.voice.channel
     if ctx.voice_client is None:
       await voice_channel.connect()
-      playsound('https://replit.com/@MathisBebooz/main#bonjour.mp3')
+      playsound('main#bonjour.mp3')
     else:
       await ctx.voice_client.move_to(voice_channel)
   
   @commands.command()
   async def disconnect(self,ctx):
-    playsound('https://replit.com/@MathisBebooz/main#aurevoir.mp3')
+    playsound('main#aurevoir.mp3')
     await ctx.voice_client.disconnect()
 
   @commands.command()
   async def play(self,ctx,url):
     ctx.voice_client.stop()
-    playsound('https://replit.com/@MathisBebooz/main#son.mp3')
+    playsound('main#son.mp3')
     FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
@@ -39,7 +39,7 @@ class music(commands.Cog):
       
   @commands.command()
   async def pause(self,ctx):
-    playsound('https://replit.com/@MathisBebooz/main#pause.mp3')
+    playsound('main#pause.mp3')
     await ctx.voice_client.pause()
     await ctx.send("Paused ⏸️")
 
