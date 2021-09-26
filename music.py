@@ -40,7 +40,7 @@ class music(commands.Cog):
       url2 = info['formats'][0]['url']
       source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
       vc.play(source)
-      time.sleep(10)
+      time.sleep(5)
     await ctx.voice_client.disconnect()
 
   @commands.command()
