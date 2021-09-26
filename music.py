@@ -14,22 +14,19 @@ class music(commands.Cog):
     voice_channel = ctx.author.voice.channel
     if ctx.voice_client is None:
       await voice_channel.connect()
-      source = audio.play_file("bonjour.mp3")
-      source.play()
+      _sound = audio.play_file("bonjour.mp3")
     else:
       await ctx.voice_client.move_to(voice_channel)
   
   @commands.command()
   async def disconnect(self,ctx):
-    source = audio.play_file("aurevoir.mp3")
-    source.play()
+    _sound = audio.play_file("aurevoir.mp3")
     await ctx.voice_client.disconnect()
 
   @commands.command()
   async def play(self,ctx,url):
     ctx.voice_client.stop()
-    source = audio.play_file("son.mp3")
-    source.play()
+    _sound = audio.play_file("son.mp3")
     FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
@@ -42,8 +39,7 @@ class music(commands.Cog):
       
   @commands.command()
   async def pause(self,ctx):
-    source = audio.play_file("pause.mp3")
-    source.play()
+    _sound = audio.play_file("pause.mp3")
     await ctx.voice_client.pause()
     await ctx.send("Paused ⏸️")
 
