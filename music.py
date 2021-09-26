@@ -8,28 +8,47 @@ class music(commands.Cog):
     self.client = client
 
   @commands.command()
-  async def join(self,ctx):
+  async def join(self,ctx,url):
     if ctx.author.voice is None:
       await ctx.send("You're not in a voice channel !")
     voice_channel = ctx.author.voice.channel
     if ctx.voice_client is None:
       await voice_channel.connect()
-      _sound = audio.play_file("bonjour.mp3")
-      _sound.play()
+      ctx.voice_client.stop()
+      FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+      YDL_OPTIONS = {'format':"bestaudio"}
+      vc = ctx.voice_client
+      with youtube_dl.YoutubeDL(YDL_OPTIONS):
+        source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/czhXkKCbdI4",**FFMPEG_OPTIONS)
+        vc.play(source)
+
     else:
       await ctx.voice_client.move_to(voice_channel)
   
   @commands.command()
-  async def disconnect(self,ctx):
-    _sound = audio.play_file("aurevoir.mp3")
-    _sound.play()
+  async def disconnect(self,ctx,url):
+    ctx.voice_client.stop()
+    FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+    YDL_OPTIONS = {'format':"bestaudio"}
+    vc = ctx.voice_client
+    with youtube_dl.YoutubeDL(YDL_OPTIONS):
+      source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/mzw6HCPKtzo",**FFMPEG_OPTIONS)
+      vc.play(source)
     await ctx.voice_client.disconnect()
 
   @commands.command()
   async def play(self,ctx,url):
+
     ctx.voice_client.stop()
-    _sound = audio.play_file("son.mp3")
-    _sound.play()
+    FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+    YDL_OPTIONS = {'format':"bestaudio"}
+    vc = ctx.voice_client
+    with youtube_dl.YoutubeDL(YDL_OPTIONS):
+      source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/CI10_oVNIbE",**FFMPEG_OPTIONS)
+      vc.play(source)
+
+
+    ctx.voice_client.stop()
     FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     YDL_OPTIONS = {'format':"bestaudio"}
     vc = ctx.voice_client
@@ -41,9 +60,14 @@ class music(commands.Cog):
       vc.play(source)
       
   @commands.command()
-  async def pause(self,ctx):
-    _sound = audio.play_file("pause.mp3")
-    _sound.play()
+  async def pause(self,ctx,url):
+    ctx.voice_client.stop()
+    FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+    YDL_OPTIONS = {'format':"bestaudio"}
+    vc = ctx.voice_client
+    with youtube_dl.YoutubeDL(YDL_OPTIONS):
+      source = await discord.FFmpegOpusAudio.from_probe("https://youtu.be/rOjazSw07qo",**FFMPEG_OPTIONS)
+      vc.play(source)
     await ctx.voice_client.pause()
     await ctx.send("Paused ⏸️")
 
